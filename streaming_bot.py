@@ -173,7 +173,7 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
                 f'while true; do '
                 f'LIVE_URL=$(yt-dlp --no-update -f "b" -g "{m3u_url}"); '
                 f'ffmpeg -http_persistent 0 -headers "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" '
-                f'-rw_timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
+                f'-timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
                 f'-re -i "$LIVE_URL" -c:v copy -c:a copy -f flv "{full_rtmp_destination}"; '
                 f'sleep {RECONNECT_DELAY}; '
                 f'done'
@@ -184,8 +184,9 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
         elif stream_type == 'radio':
             bash_command = (
                 f'while true; do '
-                f'ffmpeg -rw_timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
+                f'ffmpeg '
                 f'-f lavfi -i color=c=black:s=640x360:r=10 '
+                f'-timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
                 f'-re -i "{m3u_url}" '
                 f'-c:v libx264 -pix_fmt yuv420p -b:v 100k -g 20 '
                 f'-c:a aac -b:a 128k '
@@ -199,7 +200,7 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
         else:
             bash_command = (
                 f'while true; do '
-                f'ffmpeg -rw_timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
+                f'ffmpeg -timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
                 f'-re -i "{m3u_url}" -c:v copy -c:a copy -f flv "{full_rtmp_destination}"; '
                 f'sleep {RECONNECT_DELAY}; '
                 f'done'
