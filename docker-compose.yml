@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  streaming-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: streaming-bot
+    
+    # Environment variables
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN:-}
+      - PYTHONUNBUFFERED=1
+    
+    # Volumes for persistent data
+    volumes:
+      - ./data:/app/data
+      - ./stream_manager.db:/app/stream_manager.db
+    
+    # Restart policy
+    restart: always
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Networks
+networks:
+  default:
+    name: streaming-network
+
+# Volumes
+volumes:
+  data:
+    driver: local
