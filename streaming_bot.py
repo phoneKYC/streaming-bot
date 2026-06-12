@@ -3,6 +3,7 @@ import subprocess
 import os
 import signal
 import sqlite3
+from urllib.parse import urlparse
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from dotenv import load_dotenv
@@ -23,6 +24,57 @@ process_pointer = None
 # FFmpeg Configuration
 FFMPEG_TIMEOUT = int(os.getenv("FFMPEG_TIMEOUT", "15000000"))
 RECONNECT_DELAY = int(os.getenv("RECONNECT_DELAY", "5"))
+
+# Audio file extensions that indicate a radio/audio-only stream
+AUDIO_EXTENSIONS = ('.mp3', '.aac', '.ogg', '.opus', '.m3u', '.m3u8', '.pls', '.asx', '.xspf')
+
+# Known radio stream domains
+RADIO_DOMAINS = ('aymane.xyz', 'qurango.net', 'radiojar.com', 'radiocoast.com', 'listenradio.org')
+
+
+def is_valid_url(url):
+    """Check if the provided string is a valid URL with a supported protocol."""
+    try:
+        result = urlparse(url)
+        return result.scheme in ('http', 'https', 'rtmp', 'rtmps', 'rtsp')
+    except Exception:
+        return False
+
+
+def detect_stream_type(url):
+    """Detect the type of stream based on URL patterns.
+    
+    Returns:
+        str: 'youtube', 'radio', or 'iptv'
+    """
+    # YouTube detection
+    if 'youtube.com' in url or 'youtu.be' in url:
+        return 'youtube'
+    
+    # Radio/Audio-only detection
+    # 1. Known radio domains
+    parsed = urlparse(url)
+    domain = parsed.netloc.lower()
+    path = parsed.path.lower()
+    
+    for radio_domain in RADIO_DOMAINS:
+        if radio_domain in domain:
+            return 'radio'
+    
+    # 2. /radio/ in URL path
+    if '/radio/' in path:
+        return 'radio'
+    
+    # 3. M3U8 that DOES contain 'live' -> treat as IPTV (live video stream)
+    if url.lower().endswith('.m3u8') and 'live' in url.lower():
+        return 'iptv'
+    
+    # 4. Audio file extensions (mp3, aac, ogg, etc.)
+    if url.lower().endswith(AUDIO_EXTENSIONS):
+        return 'radio'
+    
+    # Default: IPTV stream
+    return 'iptv'
 
 def init_db():
     """Initialize SQLite database with required tables."""
@@ -111,8 +163,12 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
             
         full_rtmp_destination = f"{server_url}{stream_key}"
         
+        # Detect stream type automatically
+        stream_type = detect_stream_type(m3u_url)
+        logger.info(f"🔍 Detected stream type: {stream_type} for URL: {m3u_url}")
+        
         # YouTube Streams Configuration
-        if "youtube.com" in m3u_url or "youtu.be" in m3u_url:
+        if stream_type == 'youtube':
             bash_command = (
                 f'while true; do '
                 f'LIVE_URL=$(yt-dlp --no-update -f "b" -g "{m3u_url}"); '
@@ -124,20 +180,20 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
             )
             logger.info("🎬 YouTube streaming configured")
             
-        # M3U Playlists Configuration (Radio/Audio)
-        elif "aymane.xyz" in m3u_url or m3u_url.endswith('.m3u8') and not "live" in m3u_url:
+        # Radio/Audio-only Streams Configuration
+        elif stream_type == 'radio':
             bash_command = (
                 f'while true; do '
                 f'ffmpeg -rw_timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
                 f'-f lavfi -i color=c=black:s=640x360:r=10 '
                 f'-re -i "{m3u_url}" '
                 f'-c:v libx264 -pix_fmt yuv420p -b:v 100k -g 20 '
-                f'-c:a copy '
+                f'-c:a aac -b:a 128k '
                 f'-shortest -f flv "{full_rtmp_destination}"; '
                 f'sleep {RECONNECT_DELAY}; '
                 f'done'
             )
-            logger.info("🎵 M3U/Radio streaming configured")
+            logger.info("🎵 Radio/Audio streaming configured")
             
         # Standard IPTV Streams Configuration
         else:
@@ -145,7 +201,7 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
                 f'while true; do '
                 f'ffmpeg -rw_timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 1 -reconnect_streamed 1 -reconnect_delay_max 5 '
                 f'-re -i "{m3u_url}" -c:v copy -c:a copy -f flv "{full_rtmp_destination}"; '
-                f'sleep 10; '
+                f'sleep {RECONNECT_DELAY}; '
                 f'done'
             )
             logger.info("📺 IPTV streaming configured")
@@ -199,11 +255,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     welcome = (
         "👋 أهلاً بك في بوت إدارة البث المباشر المرن!\n\n"
         "**الأوامر الحالية:**\n"
-        "1️⃣ `/setup [رابط_M3U] [عنوان_الخادم] [مفتاح_البث] [معرف_القناة]`\n"
+        "1️⃣ `/setup [رابط_البث] [عنوان_الخادم] [مفتاح_البث] [معرف_القناة]`\n"
         "2️⃣ `/start_stream` - لبدء البث\n"
         "3️⃣ `/stop_stream` - لإيقاف البث\n"
         "4️⃣ `/status` - لعرض حالة الجلسة\n\n"
-        "📖 للمزيد من المعلومات، انظر التوثيق: https://github.com/IIDZII/streaming-bot"
+        "**أنواع البث المدعومة:**\n"
+        "🎬 يوتيوب | 🎵 إذاعة/راديو | 📺 IPTV\n\n"
+        "📖 للمزيد من المعلومات، انظر التوثيق: https://github.com/phoneKYC/streaming-bot"
     )
     logger.info(f"👋 User {update.effective_user.id} started the bot")
     await update.message.reply_text(welcome, parse_mode="Markdown")
@@ -224,7 +282,31 @@ async def setup_stream(update: Update, context: ContextTypes.DEFAULT_TYPE):
     stream_key = context.args[2]
     channel_id = context.args[3]
     
-    await update.message.reply_text("🔄 جاري التحقق من صلاحيات البوت في القناة...")
+    # Validate stream URL format
+    if not is_valid_url(m3u_url):
+        await update.message.reply_text(
+            "❌ رابط البث غير صالح! تأكد من استخدام رابط يبدأ بـ http:// أو https://"
+        )
+        logger.warning(f"❌ Invalid stream URL from user {user_id}: {m3u_url}")
+        return
+    
+    # Validate server URL format
+    if not is_valid_url(server_url):
+        await update.message.reply_text(
+            "❌ رابط الخادم غير صالح! تأكد من استخدام رابط يبدأ بـ rtmp:// أو https://"
+        )
+        logger.warning(f"❌ Invalid server URL from user {user_id}: {server_url}")
+        return
+    
+    # Detect stream type and inform the user
+    stream_type = detect_stream_type(m3u_url)
+    type_labels = {'youtube': '🎬 يوتيوب', 'radio': '🎵 إذاعة/راديو', 'iptv': '📺 IPTV'}
+    type_label = type_labels.get(stream_type, '📺 IPTV')
+    
+    await update.message.reply_text(
+        f"🔄 جاري التحقق من صلاحيات البوت في القناة...\n"
+        f"📡 نوع البث المكتشف: {type_label}"
+    )
     logger.info(f"🔍 Checking permissions for user {user_id}")
     
     if not await check_bot_permissions(context, channel_id):
@@ -237,7 +319,9 @@ async def setup_stream(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         save_settings(user_id, m3u_url, server_url, stream_key, channel_id)
         await update.message.reply_text(
-            "✅ تم حفظ الإعدادات بنجاح!\nأرسل الآن `/start_stream` للبدء.",
+            f"✅ تم حفظ الإعدادات بنجاح!\n"
+            f"📡 نوع البث: {type_label}\n"
+            f"أرسل الآن `/start_stream` للبدء.",
             parse_mode="Markdown"
         )
         logger.info(f"✅ Settings saved successfully for user {user_id}")
@@ -305,10 +389,17 @@ async def get_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
     db_status = "🔴 متوقف" if not settings or settings[4] == 0 else "🟢 قيد العمل"
     script_status = "🟢 نشط" if process_pointer and process_pointer.poll() is None else "🔴 غير نشط"
     
+    # Detect stream type for display
+    stream_url = settings[0] if settings else ''
+    stream_type = detect_stream_type(stream_url) if stream_url else 'iptv'
+    type_labels = {'youtube': '🎬 يوتيوب', 'radio': '🎵 إذاعة/راديو', 'iptv': '📺 IPTV'}
+    type_label = type_labels.get(stream_type, '📺 IPTV')
+    
     status_message = (
         f"📊 **حالة الجلسة الحالية:**\n"
         f"- في قاعدة البيانات: {db_status}\n"
         f"- خادم البث: `{settings[1] if settings else 'غير محدد'}`\n"
+        f"- نوع البث: {type_label}\n"
         f"- عملية FFmpeg: {script_status}"
     )
     
