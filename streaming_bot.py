@@ -195,16 +195,17 @@ def launch_ffmpeg_process(m3u_url, server_url, stream_key):
             
         # 🌟 الحالة الثالثة: البث المباشر المعتاد IPTV ومحاولات كسر الحظر (YCN & Cloudflare Bypass)
         else:
-            # ترويسة المتصفح وموقع الإحالة من إكس (تويتر سابقاً) لخداع جدران الحماية
+            # هنا نقوم بصياغة الترويسة بأسلوب بايثون الصرف مع النزول لسطر جديد حقيقي ومؤمن بـ CRLF متوافق تماماً
             custom_headers = (
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\\r\\n"
-                "Referer: https://x.com/\\r\\n"
+                "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\r\n"
+                "Referer: https://x.com/\r\n"
             )
+            
             # ضبط reconnect_at_eof إلى 0 مع sleep 15 لمنع حلقات التكرار الميتة عند انقطاع ملفات الـ ts المتغيرة
             bash_command = (
                 f'while true; do '
                 f'ffmpeg -timeout {FFMPEG_TIMEOUT} -reconnect 1 -reconnect_at_eof 0 -reconnect_streamed 1 -reconnect_delay_max 10 '
-                f'-headers "{custom_headers}" '
+                f'-headers {subprocess.list2cmdline([custom_headers])} ' # حماية الترويسات وضمان تمريرها بسطورها الجديدة بأمان لـ FFmpeg
                 f'-live_start_index -1 -i "{m3u_url}" -c:v copy -c:a copy -f flv "{full_rtmp_destination}"; '
                 f'echo "FFmpeg exited, waiting 15 seconds to prevent rate limits..."; '
                 f'sleep 15; ' # حماية قصوى ومقاومة لعمليات حظر الـ IP المؤقت من السيرفرات الحساسة
