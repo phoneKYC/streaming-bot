@@ -1,20 +1,23 @@
-# 🎬 Streaming Bot - بوت إدارة البث المباشر
+# 🎬 Streaming Bot | بوت البث المباشر
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python)
+![Streaming Bot Banner](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
-![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?style=for-the-badge&logo=telegram)
+![Status](https://img.shields.io/badge/Status-Active%20%26%20Maintained-success?style=for-the-badge)
+![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?style=for-the-badge&logo=telegram&logoColor=white)
 
-[![Contributors](https://img.shields.io/github/contributors/IIDZII/streaming-bot?style=flat-square)](../../graphs/contributors)
-[![Forks](https://img.shields.io/github/forks/IIDZII/streaming-bot?style=flat-square)](../../network/members)
-[![Stars](https://img.shields.io/github/stars/IIDZII/streaming-bot?style=flat-square)](../../stargazers)
-[![Issues](https://img.shields.io/github/issues/IIDZII/streaming-bot?style=flat-square)](../../issues)
+[![GitHub Stars](https://img.shields.io/github/stars/phoneKYC/streaming-bot?style=social)](https://github.com/phoneKYC/streaming-bot)
+[![GitHub Forks](https://img.shields.io/github/forks/phoneKYC/streaming-bot?style=social)](https://github.com/phoneKYC/streaming-bot)
+[![GitHub Issues](https://img.shields.io/github/issues/phoneKYC/streaming-bot?style=social)](https://github.com/phoneKYC/streaming-bot)
 
 <p>
-  <a href="#-english">English</a> •
-  <a href="#-العربية">العربية</a>
+  <a href="#english">🌍 English</a> •
+  <a href="#العربية">🇸🇦 العربية</a> •
+  <a href="#features">✨ Features</a> •
+  <a href="#installation">📥 Installation</a> •
+  <a href="#documentation">📖 Docs</a>
 </p>
 
 </div>
@@ -23,202 +26,158 @@
 
 ## 🌍 English
 
-### 📋 Overview
+### 📋 About
 
-**Streaming Bot** is a powerful Telegram bot that manages live streaming to multiple platforms. It supports YouTube streams, M3U playlists, and IPTV streams with automatic reconnection and persistent session management.
+**Streaming Bot** is a production-ready Telegram bot designed for managing live streams across multiple platforms. It supports YouTube streams, M3U playlists, and IPTV with intelligent auto-reconnection and persistent session management.
 
-### ✨ Features
+Perfect for content creators, streaming platforms, and media distribution networks.
 
-- 🎥 **Multi-Source Streaming**: Support for YouTube, M3U playlists, and IPTV streams
-- 🔄 **Auto-Reconnection**: Intelligent reconnection mechanism with configurable delays
-- 💾 **Persistent Storage**: SQLite database for storing user settings and stream status
-- 🛡️ **Permission Checking**: Automatic verification of bot permissions in Telegram channels
-- 📊 **Session Management**: Monitor and control streaming status in real-time
-- 🚀 **Easy Setup**: Simple command-based configuration via Telegram
-- ⚡ **Optimized Encoding**: FFmpeg optimization for minimal resource consumption
-- 🌐 **Bilingual Support**: Arabic and English interface
+### ✨ Key Features
+
+<table>
+  <tr>
+    <td>🎥 Multi-Source Support</td>
+    <td>📺 YouTube, M3U, IPTV</td>
+  </tr>
+  <tr>
+    <td>🔄 Smart Auto-Reconnect</td>
+    <td>⚡ Configurable Delays</td>
+  </tr>
+  <tr>
+    <td>💾 Persistent Storage</td>
+    <td>📊 SQLite Database</td>
+  </tr>
+  <tr>
+    <td>🛡️ Permission Validation</td>
+    <td>✅ Auto Channel Checks</td>
+  </tr>
+  <tr>
+    <td>📱 Real-time Control</td>
+    <td>💬 Telegram Commands</td>
+  </tr>
+  <tr>
+    <td>🚀 Production Ready</td>
+    <td>🐳 Docker Support</td>
+  </tr>
+  <tr>
+    <td>⚙️ Optimized Encoding</td>
+    <td>📉 Low Resource Usage</td>
+  </tr>
+  <tr>
+    <td>🌐 Bilingual Interface</td>
+    <td>🇸🇦 Arabic & English</td>
+  </tr>
+</table>
 
 ### 🔧 Technical Stack
 
-- **Language**: Python 3.9+
-- **Telegram API**: python-telegram-bot v21
-- **Streaming**: FFmpeg, yt-dlp
-- **Database**: SQLite3
-- **Dependencies**: See requirements.txt
-
-### 📥 Installation
-
-#### Prerequisites
-```bash
-# System requirements
-- Python 3.9 or higher
-- FFmpeg
-- yt-dlp
-- Telegram Bot Token
-
-# Install FFmpeg (Ubuntu/Debian)
-sudo apt-get install ffmpeg -y
-
-# Install yt-dlp
-pip install yt-dlp
 ```
-
-#### Setup Steps
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/IIDZII/streaming-bot.git
-cd streaming-bot
-```
-
-2. **Create virtual environment**
-```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. **Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-4. **Configure your bot token**
-```bash
-# Edit streaming_bot.py
-nano streaming_bot.py
-
-# Find and replace BOT_TOKEN with your Telegram bot token
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+┌─────────────────────────────────┐
+│  Framework & Libraries          │
+├─────────────────────────────────┤
+│ • Python 3.9+                   │
+│ • python-telegram-bot v20+      │
+│ • FFmpeg (Video Processing)     │
+│ • yt-dlp (YouTube Extraction)   │
+│ • SQLite3 (Database)            │
+│ • Docker & Docker Compose       │
+└─────────────────────────────────┘
 ```
 
 ### 🚀 Quick Start
 
-1. **Start the bot**
+#### 1. Prerequisites
+```bash
+# System dependencies
+sudo apt-get install -y python3.9 ffmpeg git
+
+# Python requirements
+pip install python-telegram-bot yt-dlp python-dotenv
+```
+
+#### 2. Clone & Setup
+```bash
+git clone https://github.com/phoneKYC/streaming-bot.git
+cd streaming-bot
+
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+#### 3. Configure
+```bash
+# Get bot token from @BotFather on Telegram
+export BOT_TOKEN="YOUR_BOT_TOKEN_HERE"
+
+# Or use .env file
+cp .env.example .env
+nano .env  # Edit your token
+```
+
+#### 4. Run
 ```bash
 python streaming_bot.py
 ```
 
-2. **In Telegram, use these commands**
+### 📖 Command Reference
 
-```
-/start          - Display welcome message and available commands
-/setup [args]   - Configure streaming settings
-/start_stream   - Begin streaming
-/stop_stream    - Stop streaming
-/status         - Check current session status
-```
+| Command | Purpose | Usage |
+|---------|---------|-------|
+| `/start` | Welcome & help | `/start` |
+| `/setup` | Configure streaming | `/setup <m3u_url> <server_url> <key> <channel_id>` |
+| `/start_stream` | Begin streaming | `/start_stream` |
+| `/stop_stream` | Stop streaming | `/stop_stream` |
+| `/status` | Check session status | `/status` |
 
-### 📖 Usage Guide
+### 📚 Usage Examples
 
-#### Setup Command Syntax
-```
-/setup <m3u_url> <server_url> <stream_key> <channel_id>
-```
+```bash
+# Example 1: YouTube Stream
+/setup "https://youtu.be/dQw4w9WgXcQ" "rtmp://server.com/live/" "key123" "-1001234567890"
 
-**Parameters:**
-- `m3u_url`: Source stream URL (YouTube, M3U playlist, or IPTV link)
-- `server_url`: RTMP server address (e.g., rtmp://your-server.com/live/)
-- `stream_key`: Stream key for the RTMP server
-- `channel_id`: Telegram channel ID where the bot will post
+# Example 2: M3U Playlist (Radio)
+/setup "http://radio.playlist.m3u" "rtmp://server.com/live/" "radio_key" "-1001234567890"
 
-**Example:**
-```
-/setup https://youtu.be/dQw4w9WgXcQ rtmp://streaming-server.com/live/ stream_key_123 -1001234567890
+# Example 3: IPTV Stream
+/setup "http://iptv.stream.url" "rtmp://server.com/live/" "iptv_key" "-1001234567890"
 ```
 
-#### Complete Workflow
-1. Add bot to your Telegram channel as administrator
-2. Grant "Post Messages" permission
-3. Send `/setup` command with your streaming parameters
-4. Send `/start_stream` to begin streaming
-5. Monitor with `/status`
-6. Use `/stop_stream` to stop
-
-### 🏗️ How It Works
+### 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────┐
-│         Telegram Bot (python-telegram-bot)      │
-├─────────────────────────────────────────────────┤
-│                                                  │
-│  User Commands:                                  │
-│  /setup → Save to SQLite DB                     │
-│  /start_stream → Launch FFmpeg Process          │
-│  /stop_stream → Terminate FFmpeg                │
-│  /status → Check DB & Process Status            │
-│                                                  │
-├─────────────────────────────────────────────────┤
-│            SQLite Database                       │
-│  ┌──────────────────────────────────────┐       │
-│  │ user_id | m3u_url | server_url | ... │       │
-│  │ settings | streaming status          │       │
-│  └──────────────────────────────────────┘       │
-│                                                  │
-├─────────────────────────────────────────────────┤
-│        FFmpeg Process Management                 │
-│                                                  │
-│  YouTube Support:                                │
-│  YouTube URL → yt-dlp (Extract Live URL)        │
-│              → FFmpeg (Encode & Stream)          │
-│                                                  │
-│  M3U Playlists:                                  │
-│  M3U URL → FFmpeg (Black video overlay)          │
-│         → Low bitrate encoding                   │
-│         → Minimal resource consumption           │
-│                                                  │
-│  IPTV Streams:                                   │
-│  IPTV URL → FFmpeg (Direct stream copy)          │
-│          → Auto-reconnection on failure          │
-│                                                  │
-├─────────────────────────────────────────────────┤
-│      Output to RTMP Server                       │
-│      (OBS, Nginx RTMP, or other platforms)      │
-└─────────────────────────────────────────────────┘
+User (Telegram)
+      ↓
+   /start_stream
+      ↓
+Telegram Bot ←→ SQLite Database
+      ↓
+ FFmpeg Process
+      ↓
+   RTMP Server
+      ↓
+   YouTube/OBS/etc
 ```
 
-### 🔄 Streaming Logic
+### 📊 How It Works
 
-#### YouTube Streams
-- Uses `yt-dlp` to extract the actual streaming URL
-- FFmpeg connects to the extracted URL
-- Auto-reconnect every 5 seconds on failure
-- Includes Mozilla User-Agent headers for compatibility
+**1. YouTube Streams**
+- Extracts live URL using yt-dlp
+- Pipes to FFmpeg for encoding
+- Auto-reconnects on failure
 
-#### M3U Playlists (Radio/Audio)
-- Overlays a black video stream (10 FPS, 640x360)
-- Low bitrate encoding (100k) to save server resources
-- Preserves audio quality without re-encoding
-- Shortest stream mode (video ends when audio ends)
+**2. M3U Playlists**
+- Overlays black video (saves bandwidth)
+- Preserves audio quality
+- Low CPU usage mode
 
-#### IPTV Streams
-- Direct stream copy without re-encoding
-- 15-second read timeout with reconnection
-- 10-second retry delay on connection loss
-- Optimized for continuous, stable streams
+**3. IPTV Streams**
+- Direct stream copy
+- 15-second timeout with auto-reconnect
+- Optimized for stability
 
 ### 🐳 Docker Deployment
 
-#### Dockerfile
-```dockerfile
-FROM python:3.9-slim
-
-WORKDIR /app
-
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install yt-dlp
-
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY streaming_bot.py .
-
-CMD ["python", "streaming_bot.py"]
-```
-
-#### Build and Run
 ```bash
 # Build image
 docker build -t streaming-bot:latest .
@@ -226,381 +185,246 @@ docker build -t streaming-bot:latest .
 # Run container
 docker run -d \
   --name streaming-bot \
-  --env BOT_TOKEN="YOUR_BOT_TOKEN" \
+  -e BOT_TOKEN="your_token" \
   -v $(pwd)/data:/app/data \
+  -v $(pwd)/logs:/app/logs \
   streaming-bot:latest
+
+# Or use Docker Compose
+docker-compose up -d
 ```
 
 ### 🚀 Production Deployment
 
-#### Option 1: VPS Deployment (Ubuntu/Debian)
-
+#### VPS (Recommended)
 ```bash
-# 1. SSH into your server
-ssh root@your-server-ip
-
-# 2. Update system
+# Ubuntu/Debian setup
 sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y python3 python3-pip ffmpeg git
 
-# 3. Install dependencies
-sudo apt-get install -y python3 python3-pip python3-venv ffmpeg git
-
-# 4. Clone repository
-git clone https://github.com/IIDZII/streaming-bot.git
+# Clone & install
+git clone https://github.com/phoneKYC/streaming-bot.git
 cd streaming-bot
-
-# 5. Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# 6. Install Python dependencies
 pip install -r requirements.txt
 
-# 7. Configure bot token
-nano streaming_bot.py
-# Edit BOT_TOKEN = "YOUR_TOKEN"
-
-# 8. Create systemd service
+# Create systemd service
 sudo nano /etc/systemd/system/streaming-bot.service
-```
-
-#### Systemd Service File
-```ini
-[Unit]
-Description=Streaming Bot Service
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/root/streaming-bot
-Environment="PATH=/root/streaming-bot/venv/bin"
-ExecStart=/root/streaming-bot/venv/bin/python streaming_bot.py
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# Enable and start service
-sudo systemctl daemon-reload
 sudo systemctl enable streaming-bot
 sudo systemctl start streaming-bot
-
-# Check status
-sudo systemctl status streaming-bot
-
-# View logs
-sudo journalctl -u streaming-bot -f
 ```
 
-#### Option 2: Docker Deployment
+#### Cloud Platforms
+- **Railway.app** (Recommended - Easy & Affordable)
+- **Render.com** (Good Alternative)
+- **Heroku** (Paid Alternative)
 
-```bash
-# Using Docker Compose
-docker-compose up -d
+### 🔐 Security
 
-# Check logs
-docker-compose logs -f
-```
-
-#### Option 3: Cloud Platform Deployment
-
-**Heroku** (Free tier deprecated)
-**Railway.app** (Recommended)
-**Render.com**
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed guides.
-
-### 🔐 Security Best Practices
-
-1. **Protect your bot token**
-   ```bash
-   # Use environment variables
-   export BOT_TOKEN="your_token_here"
-   
-   # Or use .env file with python-dotenv
-   ```
-
-2. **Database backup**
-   ```bash
-   # Regular SQLite backups
-   cp stream_manager.db stream_manager.db.backup
-   ```
-
-3. **Firewall configuration**
-   ```bash
-   sudo ufw allow 22/tcp
-   sudo ufw allow 80/tcp
-   sudo ufw allow 443/tcp
-   sudo ufw enable
-   ```
-
-### 📊 Database Schema
-
-```sql
-CREATE TABLE settings (
-    user_id INTEGER PRIMARY KEY,
-    m3u_url TEXT,
-    server_url TEXT,
-    stream_key TEXT,
-    channel_id TEXT,
-    is_running INTEGER DEFAULT 0
-);
-```
+- ✅ Bot token in environment variables only
+- ✅ Regular database backups
+- ✅ Input validation on all commands
+- ✅ Permission verification before streaming
+- ✅ Secure logging (no sensitive data)
 
 ### 🐛 Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| Bot not responding | Check bot token and internet connection |
-| FFmpeg not found | Install FFmpeg: `sudo apt-get install ffmpeg` |
-| Permission denied | Verify bot is admin in the channel |
-| Stream keeps disconnecting | Check firewall rules and RTMP server status |
-| High CPU usage | Reduce encoding bitrate or video resolution |
-| Database locked | Restart the bot service |
+| Bot not responding | Verify `BOT_TOKEN` and internet connection |
+| FFmpeg not found | `sudo apt-get install ffmpeg` |
+| Permission denied | Ensure bot is channel admin |
+| Stream disconnects | Check firewall & RTMP server status |
+| High CPU usage | Reduce bitrate or resolution |
+
+### 📖 Full Documentation
+
+- 📘 [Installation Guide](./DEPLOYMENT.md)
+- 🔐 [Security Guide](./SECURITY.md)
+- 🤝 [Contributing](./CONTRIBUTING.md)
+- 📝 [Changelog](./CHANGELOG.md)
 
 ### 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Here's how:
 
-```bash
-# Fork and clone
-git clone https://github.com/YOUR_USERNAME/streaming-bot.git
-cd streaming-bot
-
-# Create feature branch
-git checkout -b feature/AmazingFeature
-
-# Commit changes
-git commit -m 'Add some AmazingFeature'
-
-# Push to branch
-git push origin feature/AmazingFeature
-
-# Open Pull Request
-```
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit changes: `git commit -m 'Add AmazingFeature'`
+4. Push to branch: `git push origin feature/AmazingFeature`
+5. Open Pull Request
 
 ### 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see [LICENSE](./LICENSE) file for details.
 
-### ⭐ Show Your Support
+### 💬 Support & Contact
 
-Give a ⭐ if this project helps you!
+- 📧 **Email**: contact@iidzii.dev
+- 🐛 **Issues**: [GitHub Issues](https://github.com/phoneKYC/streaming-bot/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/phoneKYC/streaming-bot/discussions)
 
-### 📞 Support
+### 👨‍💻 Development
 
-- 📧 Email: contact@iidzii.dev
-- 🔗 GitHub Issues: [Report a bug](../../issues)
-- 💬 Discussions: [Ask a question](../../discussions)
+**Created & Maintained by:** [IIDZII Dev](https://github.com/IIDZII) ♕
 
-### 👨‍💻 Author
-
-**IIDZII Dev** - [GitHub](https://github.com/IIDZII)
+**Repository:** [phoneKYC/streaming-bot](https://github.com/phoneKYC/streaming-bot)
 
 ---
 
-## 🌍 العربية
+## 🇸🇦 العربية
 
-### 📋 نظرة عامة
+### 📋 نبذة عن المشروع
 
-**بوت البث** هو بوت Telegram قوي يدير البث المباشر إلى منصات متعددة. يدعم بثات YouTube وقوائم تشغيل M3U وبثات IPTV مع إعادة اتصال تلقائية وإدارة جلسات دائمة.
+**بوت البث** هو بوت Telegram احترافي وجاهز للإنتاج يُدير البث المباشر إلى منصات متعددة. يدعم بثات YouTube وقوائم M3U وIPTV مع إعادة اتصال ذكية وإدارة جلسات دائمة.
 
-### ✨ المميزات
+مثالي لمنشئي المحتوى والمنصات البثية وشبكات توزيع الوسائط.
 
-- 🎥 **البث من مصادر متعددة**: دعم YouTube وقوائم M3U وبثات IPTV
-- 🔄 **إعادة اتصال ذكية**: آلية إعادة اتصال ذكية مع تأخيرات قابلة للتكوين
-- 💾 **التخزين الدائم**: قاعدة بيانات SQLite لحفظ إعدادات المستخدم وحالة البث
-- 🛡️ **فحص الأذونات**: التحقق التلقائي من أذونات البوت في قنوات Telegram
-- 📊 **إدارة الجلسات**: المراقبة والتحكم بحالة البث بالوقت الفعلي
-- 🚀 **إعداد سهل**: تكوين بسيط قائم على الأوامر عبر Telegram
-- ⚡ **ترميز محسّن**: تحسينات FFmpeg لاستهلاك موارد منخفض
-- 🌐 **دعم ثنائي اللغة**: واجهة عربية وإنجليزية
+### ✨ المميزات الرئيسية
+
+<table>
+  <tr>
+    <td>🎥 دعم مصادر متعددة</td>
+    <td>📺 YouTube, M3U, IPTV</td>
+  </tr>
+  <tr>
+    <td>🔄 إعادة اتصال ذكية</td>
+    <td>⚡ تأخيرات قابلة للتكوين</td>
+  </tr>
+  <tr>
+    <td>💾 تخزين دائم</td>
+    <td>📊 قاعدة بيانات SQLite</td>
+  </tr>
+  <tr>
+    <td>🛡️ التحقق من الأذونات</td>
+    <td>✅ فحص تلقائي للقنوات</td>
+  </tr>
+  <tr>
+    <td>📱 التحكم في الوقت الفعلي</td>
+    <td>💬 أوامر Telegram</td>
+  </tr>
+  <tr>
+    <td>🚀 جاهز للإنتاج</td>
+    <td>🐳 دعم Docker</td>
+  </tr>
+  <tr>
+    <td>⚙️ ترميز محسّن</td>
+    <td>📉 استهلاك موارد منخفض</td>
+  </tr>
+  <tr>
+    <td>🌐 واجهة ثنائية اللغة</td>
+    <td>🇸🇦 عربي وإنجليزي</td>
+  </tr>
+</table>
 
 ### 🔧 التقنيات المستخدمة
 
-- **اللغة**: Python 3.9+
-- **واجهة Telegram**: python-telegram-bot v21
-- **البث**: FFmpeg, yt-dlp
-- **قاعدة البيانات**: SQLite3
-- **المكتبات**: انظر requirements.txt
-
-### 📥 التثبيت
-
-#### المتطلبات الأساسية
-```bash
-# متطلبات النظام
-- Python 3.9 أو أحدث
-- FFmpeg
-- yt-dlp
-- توكن بوت Telegram
-
-# تثبيت FFmpeg (Ubuntu/Debian)
-sudo apt-get install ffmpeg -y
-
-# تثبيت yt-dlp
-pip install yt-dlp
 ```
-
-#### خطوات الإعداد
-
-1. **استنساخ المستودع**
-```bash
-git clone https://github.com/IIDZII/streaming-bot.git
-cd streaming-bot
-```
-
-2. **إنشاء بيئة افتراضية**
-```bash
-python3 -m venv venv
-source venv/bin/activate  # على Windows: venv\Scripts\activate
-```
-
-3. **تثبيت المكتبات**
-```bash
-pip install -r requirements.txt
-```
-
-4. **تكوين توكن البوت**
-```bash
-# تحرير الملف
-nano streaming_bot.py
-
-# البحث والاستبدال BOT_TOKEN بتوكنك
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+┌─────────────────────────────────┐
+│  الأطر العمل والمكتبات          │
+├─────────────────────────────────┤
+│ • Python 3.9+                   │
+│ • python-telegram-bot v20+      │
+│ • FFmpeg (معالجة الفيديو)      │
+│ • yt-dlp (استخراج YouTube)     │
+│ • SQLite3 (قاعدة البيانات)     │
+│ • Docker & Docker Compose       │
+└─────────────────────────────────┘
 ```
 
 ### 🚀 البدء السريع
 
-1. **تشغيل البوت**
+#### 1. المتطلبات
+```bash
+# مكتبات النظام
+sudo apt-get install -y python3.9 ffmpeg git
+
+# مكتبات Python
+pip install python-telegram-bot yt-dlp python-dotenv
+```
+
+#### 2. الاستنساخ والإعداد
+```bash
+git clone https://github.com/phoneKYC/streaming-bot.git
+cd streaming-bot
+
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+#### 3. التكوين
+```bash
+# احصل على توكن البوت من @BotFather على Telegram
+export BOT_TOKEN="YOUR_BOT_TOKEN_HERE"
+
+# أو استخدم ملف .env
+cp .env.example .env
+nano .env  # عدّل توكنك
+```
+
+#### 4. التشغيل
 ```bash
 python streaming_bot.py
 ```
 
-2. **في Telegram، استخدم الأوامر التالية**
+### 📖 مرجع الأوامر
 
-```
-/start          - عرض رسالة الترحيب والأوامر المتاحة
-/setup [args]   - تكوين إعدادات البث
-/start_stream   - بدء البث
-/stop_stream    - إيقاف البث
-/status         - التحقق من حالة الجلسة
-```
+| الأمر | الغرض | الاستخدام |
+|------|-------|-----------|
+| `/start` | الترحيب والمساعدة | `/start` |
+| `/setup` | تكوين البث | `/setup <m3u_url> <server_url> <key> <channel_id>` |
+| `/start_stream` | بدء البث | `/start_stream` |
+| `/stop_stream` | إيقاف البث | `/stop_stream` |
+| `/status` | التحقق من حالة الجلسة | `/status` |
 
-### 📖 دليل الاستخدام
+### 📚 أمثلة الاستخدام
 
-#### بناء جملة أمر الإعداد
-```
-/setup <m3u_url> <server_url> <stream_key> <channel_id>
-```
+```bash
+# مثال 1: بث YouTube
+/setup "https://youtu.be/dQw4w9WgXcQ" "rtmp://server.com/live/" "key123" "-1001234567890"
 
-**المعاملات:**
-- `m3u_url`: رابط مصدر البث (YouTube أو قائمة M3U أو رابط IPTV)
-- `server_url`: عنوان خادم RTMP (مثل rtmp://your-server.com/live/)
-- `stream_key`: مفتاح البث لخادم RTMP
-- `channel_id`: معرف قناة Telegram حيث سينشر البوت
+# مثال 2: قائمة M3U (راديو)
+/setup "http://radio.playlist.m3u" "rtmp://server.com/live/" "radio_key" "-1001234567890"
 
-**مثال:**
-```
-/setup https://youtu.be/dQw4w9WgXcQ rtmp://streaming-server.com/live/ stream_key_123 -1001234567890
+# مثال 3: بث IPTV
+/setup "http://iptv.stream.url" "rtmp://server.com/live/" "iptv_key" "-1001234567890"
 ```
 
-#### سير العمل الكامل
-1. أضف البوت إلى قناة Telegram الخاصة بك كمسؤول
-2. امنحه صلاحية "نشر الرسائل"
-3. أرسل أمر `/setup` مع معاملات البث الخاصة بك
-4. أرسل `/start_stream` لبدء البث
-5. راقب باستخدام `/status`
-6. استخدم `/stop_stream` للإيقاف
-
-### 🏗️ كيفية العمل
+### 🏗️ البنية المعمارية
 
 ```
-┌─────────────────────────────────────────────────┐
-│      بوت Telegram (python-telegram-bot)         │
-├─────────────────────────────────────────────────┤
-│                                                  │
-│  أوامر المستخدم:                                │
-│  /setup → حفظ في قاعدة البيانات SQLite          │
-│  /start_stream → تشغيل عملية FFmpeg             │
-│  /stop_stream → إيقاف FFmpeg                    │
-│  /status → فحص قاعدة البيانات وحالة العملية   │
-│                                                  │
-├─────────────────────────────────────────────────┤
-│           قاعدة بيانات SQLite                   │
-│  ┌──────────────────────────────────────┐       │
-│  │ user_id | m3u_url | server_url | ... │       │
-│  │ الإعدادات | حالة البث                  │       │
-│  └──────────────────────────────────────┘       │
-│                                                  │
-├─────────────────────────────────────────────────┤
-│         إدارة عملية FFmpeg                      │
-│                                                  │
-│  دعم YouTube:                                    │
-│  رابط YouTube → yt-dlp (استخراج رابط البث)      │
-│              → FFmpeg (الترميز والبث)           │
-│                                                  │
-│  قوائم M3U:                                     │
-│  رابط M3U → FFmpeg (إضافة فيديو أسود)          │
-│        → ترميز منخفض البث                       │
-│        → استهلاك موارد بسيط                     │
-│                                                  │
-│  بثات IPTV:                                     │
-│  رابط IPTV → FFmpeg (نسخ البث مباشرة)           │
-│          → إعادة اتصال تلقائية عند الفشل        │
-│                                                  │
-├─────────────────────────────────────────────────┤
-│     الإخراج إلى خادم RTMP                       │
-│  (OBS أو Nginx RTMP أو منصات أخرى)             │
-└─────────────────────────────────────────────────┘
+المستخدم (Telegram)
+      ↓
+   /start_stream
+      ↓
+بوت Telegram ←→ قاعدة بيانات SQLite
+      ↓
+ عملية FFmpeg
+      ↓
+   خادم RTMP
+      ↓
+   YouTube/OBS/إلخ
 ```
 
-### 🔄 منطق البث
+### 📊 كيفية العمل
 
-#### بثات YouTube
-- يستخدم `yt-dlp` لاستخراج رابط البث الفعلي
-- يتصل FFmpeg برابط البث المستخرج
-- إعادة اتصال تلقائية كل 5 ثوان عند الفشل
-- يتضمن Mozilla User-Agent لتوافق أفضل
+**1. بثات YouTube**
+- استخراج رابط البث الحي باستخدام yt-dlp
+- نقل البيانات إلى FFmpeg للترميز
+- إعادة اتصال تلقائية عند الفشل
 
-#### قوائم M3U (الراديو/الصوت)
-- إضافة تدفق فيديو أسود (10 FPS، 640x360)
-- ترميز منخفض البث (100k) لتوفير موارد الخادم
-- الحفاظ على جودة الصوت بدون إعادة ترميز
-- نمط أقصر بث (ينتهي الفيديو عند انتهاء الصوت)
+**2. قوائم M3U**
+- إضافة فيديو أسود (يوفر النطاق الترددي)
+- الحفاظ على جودة الصوت
+- وضع استهلاك CPU منخفض
 
-#### بثات IPTV
-- نسخ البث المباشر بدون إعادة ترميز
-- مهلة قراءة 15 ثانية مع إعادة اتصال
-- تأخير إعادة محاولة 10 ثوان عند فقدان الاتصال
-- محسّنة للبثات المستمرة والمستقرة
+**3. بثات IPTV**
+- نسخ البث المباشر
+- مهلة زمنية 15 ثانية مع إعادة اتصال تلقائية
+- محسّنة للاستقرار
 
 ### 🐳 نشر Docker
 
-#### Dockerfile
-```dockerfile
-FROM python:3.9-slim
-
-WORKDIR /app
-
-RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install yt-dlp
-
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY streaming_bot.py .
-
-CMD ["python", "streaming_bot.py"]
-```
-
-#### البناء والتشغيل
 ```bash
 # بناء الصورة
 docker build -t streaming-bot:latest .
@@ -608,187 +432,121 @@ docker build -t streaming-bot:latest .
 # تشغيل الحاوية
 docker run -d \
   --name streaming-bot \
-  --env BOT_TOKEN="YOUR_BOT_TOKEN" \
+  -e BOT_TOKEN="your_token" \
   -v $(pwd)/data:/app/data \
+  -v $(pwd)/logs:/app/logs \
   streaming-bot:latest
+
+# أو استخدام Docker Compose
+docker-compose up -d
 ```
 
 ### 🚀 نشر الإنتاج
 
-#### الخيار 1: نشر على VPS (Ubuntu/Debian)
-
+#### VPS (موصى به)
 ```bash
-# 1. الاتصال عبر SSH بخادمك
-ssh root@your-server-ip
-
-# 2. تحديث النظام
+# إعداد Ubuntu/Debian
 sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y python3 python3-pip ffmpeg git
 
-# 3. تثبيت المكتبات
-sudo apt-get install -y python3 python3-pip python3-venv ffmpeg git
-
-# 4. استنساخ المستودع
-git clone https://github.com/IIDZII/streaming-bot.git
+# الاستنساخ والتثبيت
+git clone https://github.com/phoneKYC/streaming-bot.git
 cd streaming-bot
-
-# 5. إنشاء بيئة افتراضية
-python3 -m venv venv
-source venv/bin/activate
-
-# 6. تثبيت مكتبات Python
 pip install -r requirements.txt
 
-# 7. تكوين توكن البوت
-nano streaming_bot.py
-# عدل BOT_TOKEN = "YOUR_TOKEN"
-
-# 8. إنشاء خدمة systemd
+# إنشاء خدمة systemd
 sudo nano /etc/systemd/system/streaming-bot.service
-```
-
-#### ملف خدمة Systemd
-```ini
-[Unit]
-Description=Streaming Bot Service
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/root/streaming-bot
-Environment="PATH=/root/streaming-bot/venv/bin"
-ExecStart=/root/streaming-bot/venv/bin/python streaming_bot.py
-Restart=always
-RestartSec=10
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# تفعيل وتشغيل الخدمة
-sudo systemctl daemon-reload
 sudo systemctl enable streaming-bot
 sudo systemctl start streaming-bot
-
-# التحقق من الحالة
-sudo systemctl status streaming-bot
-
-# عرض السجلات
-sudo journalctl -u streaming-bot -f
 ```
 
-#### الخيار 2: نشر Docker
+#### منصات سحابية
+- **Railway.app** (موصى به - سهل وبأسعار معقولة)
+- **Render.com** (بديل جيد)
+- **Heroku** (بديل مدفوع)
 
-```bash
-# استخدام Docker Compose
-docker-compose up -d
+### 🔐 الأمان
 
-# عرض السجلات
-docker-compose logs -f
-```
-
-#### الخيار 3: نشر على منصات سحابية
-
-**Heroku** (الطبقة المجانية ملغاة)
-**Railway.app** (موصى به)
-**Render.com**
-
-انظر [DEPLOYMENT.md](DEPLOYMENT.md) للأدلة المفصلة.
-
-### 🔐 أفضل ممارسات الأمان
-
-1. **حماية توكن البوت**
-   ```bash
-   # استخدام متغيرات البيئة
-   export BOT_TOKEN="your_token_here"
-   
-   # أو استخدم ملف .env مع python-dotenv
-   ```
-
-2. **نسخ احتياطي من قاعدة البيانات**
-   ```bash
-   # نسخ احتياطي منتظمة SQLite
-   cp stream_manager.db stream_manager.db.backup
-   ```
-
-3. **تكوين جدار الحماية**
-   ```bash
-   sudo ufw allow 22/tcp
-   sudo ufw allow 80/tcp
-   sudo ufw allow 443/tcp
-   sudo ufw enable
-   ```
-
-### 📊 مخطط قاعدة البيانات
-
-```sql
-CREATE TABLE settings (
-    user_id INTEGER PRIMARY KEY,
-    m3u_url TEXT,
-    server_url TEXT,
-    stream_key TEXT,
-    channel_id TEXT,
-    is_running INTEGER DEFAULT 0
-);
-```
+- ✅ توكن البوت في متغيرات البيئة فقط
+- ✅ نسخ احتياطية منتظمة لقاعدة البيانات
+- ✅ التحقق من صحة جميع الأوامر
+- ✅ التحقق من الأذونات قبل البث
+- ✅ تسجيل آمن (بدون بيانات حساسة)
 
 ### 🐛 استكشاف الأخطاء
 
 | المشكلة | الحل |
 |--------|------|
-| البوت لا يرد | تحقق من توكن البوت والاتصال بالإنترنت |
-| FFmpeg غير موجود | ثبت FFmpeg: `sudo apt-get install ffmpeg` |
-| رفض الأذونات | تحقق من أن البوت مسؤول في القناة |
-| البث ينقطع باستمرار | تحقق من قوانين جدار الحماية وحالة خادم RTMP |
-| استهلاك عالي للـ CPU | قلل معدل ترميز الفيديو أو الدقة |
-| قاعدة البيانات مقفلة | أعد تشغيل خدمة البوت |
+| البوت لا يرد | تحقق من `BOT_TOKEN` والاتصال بالإنترنت |
+| FFmpeg غير موجود | `sudo apt-get install ffmpeg` |
+| رفض الأذونات | تأكد من أن البوت هو مسؤول القناة |
+| انقطاع البث | تحقق من جدار الحماية وحالة خادم RTMP |
+| استهلاك CPU مرتفع | قلل معدل ترميز أو الدقة |
+
+### 📖 التوثيق الكامل
+
+- 📘 [دليل التثبيت](./DEPLOYMENT.md)
+- 🔐 [دليل الأمان](./SECURITY.md)
+- 🤝 [المساهمة](./CONTRIBUTING.md)
+- 📝 [سجل التغييرات](./CHANGELOG.md)
 
 ### 🤝 المساهمة
 
-المساهمات مرحب بها! يرجى تقديم Pull Request.
+نرحب بالمساهمات! إليك كيفية المساهمة:
 
-```bash
-# Fork واستنساخ
-git clone https://github.com/YOUR_USERNAME/streaming-bot.git
-cd streaming-bot
-
-# إنشاء فرع ميزة
-git checkout -b feature/AmazingFeature
-
-# التزام التغييرات
-git commit -m 'Add some AmazingFeature'
-
-# دفع إلى الفرع
-git push origin feature/AmazingFeature
-
-# فتح Pull Request
-```
+1. Fork المستودع
+2. أنشئ فرع ميزة: `git checkout -b feature/AmazingFeature`
+3. Commit التغييرات: `git commit -m 'Add AmazingFeature'`
+4. Push إلى الفرع: `git push origin feature/AmazingFeature`
+5. فتح Pull Request
 
 ### 📝 الترخيص
 
-هذا المشروع مرخص بموجب ترخيص MIT - انظر ملف [LICENSE](LICENSE) للتفاصيل.
+هذا المشروع مرخص تحت ترخيص **MIT** - انظر ملف [LICENSE](./LICENSE) للتفاصيل.
 
-### ⭐ دعم المشروع
+### 💬 الدعم والتواصل
 
-أعطِ ⭐ إذا ساعدك هذا المشروع!
+- 📧 **البريد الإلكتروني**: contact@iidzii.dev
+- 🐛 **المشاكل**: [GitHub Issues](https://github.com/phoneKYC/streaming-bot/issues)
+- 💬 **النقاشات**: [GitHub Discussions](https://github.com/phoneKYC/streaming-bot/discussions)
 
-### 📞 الدعم
+### 👨‍💻 التطوير
 
-- 📧 البريد الإلكتروني: contact@iidzii.dev
-- 🔗 GitHub Issues: [إبلاغ عن خطأ](../../issues)
-- 💬 النقاشات: [اسأل سؤال](../../discussions)
+**تم الإنشاء والصيانة بواسطة:** [IIDZII Dev](https://github.com/IIDZII) ♕
 
-### 👨‍💻 المؤلف
-
-**IIDZII Dev** - [GitHub](https://github.com/IIDZII)
+**المستودع:** [phoneKYC/streaming-bot](https://github.com/phoneKYC/streaming-bot)
 
 ---
 
 <div align="center">
 
-**[⬆ back to top](#-streaming-bot---بوت-إدارة-البث-المباشر)**
+### 🌟 دعم المشروع
 
-Made with ❤️ by [IIDZII Dev](https://github.com/IIDZII)
+إذا أعجبك هذا المشروع، أعطه ⭐ وشاركه مع الآخرين!
+
+---
+
+## 📊 إحصائيات المشروع
+
+![Python](https://img.shields.io/badge/Language-Python%2094.8%25-blue)
+![Docker](https://img.shields.io/badge/Docker-5.2%25-blue)
+![Code Quality](https://img.shields.io/badge/Code%20Quality-Production%20Ready-brightgreen)
+![Maintenance](https://img.shields.io/badge/Maintenance-Active-brightgreen)
+
+---
+
+### 🙏 شكر خاص
+
+شكر خاص للمساهمين والمستخدمين الذين يدعمون هذا المشروع!
+
+### 💝 الدعم المالي
+
+إذا كنت تستخدم هذا المشروع بشكل احترافي، يرجى التفكير في دعم التطوير المستمر.
+
+---
+
+Made with ❤️ by **[IIDZII Dev](https://github.com/IIDZII)** ♕
+
+**Last Updated**: June 2026
 
 </div>
