@@ -1,20 +1,3 @@
-"""
-Streaming Bot - Hardened Edition
-================================
-نسخة مُصلحة من بوت إدارة البث المباشر تعالج جميع الثغرات الأمنية والمعمارية:
-
-  1. إزالة ثغرة RCE (Command Injection) بالكامل: لا يوجد shell=True،
-     كل مدخلات المستخدم تُمرَّر كقائمة وسائط منفصلة (list args).
-  2. مصادقة صارمة عبر قائمة ADMIN_IDS البيئية + قاعدة بيانات للمستخدمين المصرّح لهم.
-  3. ConversationHandler كامل لمعالج /setup (بدل الأمر النصي بأربع وسائط).
-  4. InlineKeyboardButton في كل مكان (Cancel/Confirm/Stop/Restart/Language).
-  5. ثنائية لغة حقيقية (AR/EN) قابلة للتبديل لكل مستخدم.
-  6. تعدد المستخدمين فعلي: كل مستخدم يملك عملية FFmpeg مستقلة في dict آمن.
-  7. MarkdownV2 مع escaping صحيح لكل القيم الديناميكية.
-  8. إزالة ترويسات التخطي القانونية المشكوك بها (Referer: x.com).
-  9. حلقة إعادة الاتصال مُعاد كتابتها في Python بدل bash while-loop.
-"""
-
 from __future__ import annotations
 
 import asyncio
